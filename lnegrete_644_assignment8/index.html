@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider assignment 8</title>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+/*global, $*/
+//slider js declaration and styles
+    $(function(){												$("container").css({
+        position:"absolute",
+        margin:"4% 22%",
+        width: "50%",
+        border: "3px solid grey",
+        padding: "2%"     
+    });
+        $("img").css({
+        width:"100%",
+        margin: "0 auto"
+    }); 
+      $("#imgSlides img").css("display", "none");
+	
+	var image, imageCycle = 0, imageCache = [];
+	$("#imgSlides img").each(function(){
+		image = new Image();
+		image.src = $(this).attr("src");
+		imageCache[imageCycle] = image;
+		imageCycle ++;
+	});
+//make it work
+	for(var i = 1; i <= imageCycle; i++) {
+		var span = "<span>" + "0" + i + "</span>";
+		$("#numericNav").append(span);
+	};
+	$("#numericNav span").css("padding", "5%");
+	$("span:eq(0)").css({
+        color: "green",
+		fontStyle: "bold",
+		fontSize: "1.5em",
+        textDecoration: "underline"
+	});
+        $("#numericNav span").on("click", function(e){
+		var numChoice = $(this).text();
+		var imgNumber = parseInt(numChoice) - 1;
+		var imgSelect = imageCache[imgNumber].src;
+		
+		if(e != this){$("span").css({
+            color: "black",
+			fontStyle: "regular",
+			fontSize: "1.2em",	
+			textDecoration: "none"
+		})};
+        if(this){  
+			$(this).css({
+				color: "green",
+				fontStyle: "bold",
+				fontSize: "1.5em",	
+				textDecoration: "underline"
+		})};
+		
+		  $("#imgSlide").fadeOut(500, function(){
+          $("#imgSlide").attr("src", imgSelect).fadeIn(500);
+		});
+	});
+});  
+    </script>
+</head>
+<body>
+    <container> 
+    <img id="imgSlide" src="images/NatGeo12.jpg" alt="national geographics">
+	<section id="imgSlides">
+		<img src="images/NatGeo05.jpg" alt="flamingos">
+		<img src="images/NatGeo08.jpg" alt="glacier">
+		<img src="images/NatGeo07.jpg" alt="lake">
+		<img src="images/NatGeo11.jpg" alt="tundra">
+		<img src="images/NatGeo12.jpg" alt="wetlands">
+	</section>
+	<nav id="numericNav"></nav>
+	
+</container>
+
+</body>
+</html>

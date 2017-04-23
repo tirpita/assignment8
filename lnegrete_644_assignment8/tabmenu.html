@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab Menu assignment 8</title>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+/*global, $*/
+//tab menu js declaration and styles
+    $(function(){
+        "use strict";
+    $("body").css({
+        backgroundColor: "lightgrey",
+        fontFamily: "sans-serif",
+        fontWeight: "200"
+    });
+        $(".tabmenu p, .tabmenu h1").css({
+        padding:"0 10px"       
+    });
+        $("p").css({
+        fontSize:".7em"       
+    });
+        $(".tabmenu .tabnav").css({
+        width:"100%",
+        height:"50px",
+        backgroundColor:"white",
+        borderRadius:"3px"
+    });
+        $(".tabmenu").css({
+        margin:"4% 10% 0 10%",
+        width: "65%",
+        padding: "5%",
+        border: "3px solid grey",
+        color:"black" 
+        });
+        
+        $(".tabmenu .selected").css({
+        backgroundColor:"black",
+        borderRadius:"3px",
+        padding:"10px"
+    });
+        $(".tabmenu .hidden").css({
+        display:"none"
+    });  
+        $(".tabnav a").css({
+        textDecoration:"none",
+        padding:"5px",
+        borderRadius:"3px",
+        color:"purple",
+        fontSize:".5em",
+        fontStyle:"bold"   
+    });
+        $(".tabnav .selected a").css({
+        color:"yellow"
+    });  
+        $(".tabnav ul li").css({
+        display: "inline-block",
+        marginTop:"10px",
+        backgroundColor:"lightgrey",
+        borderTopLeftRadius:"10px",
+        borderTopRightRadius:"10px",
+        fontSize:"1.5em",
+        fontStyle:"bold",
+        padding:"11px"
+    });
+//make it work 
+        $(".tabmenu a").onclick(function (e) {
+        var tabSelect, listItem;
+		var tabSelect = $(this).attr("href");
+		var listItem = $(this).listItem("li");
+		e.preventDefault(); 
+        function tabChange(){
+			listItem.addClass("selected").siblings().removeClass("selected");
+			$(tabSelect).removeClass("hidden").siblings().addClass("hidden");
+		}
+		if(tabSelect === "#tab1"){
+			tabChange();
+		}else if(tabSelect === "#tab2"){
+			tabChange();
+		}else if(tabSelect === "#tab3"){
+			tabChange();
+		}
+	});         
+});
+</script>
+    
+</head>
+<body>
+	<section class="tabmenu">
+		<nav class="tabnav">
+			<ul>
+				<li class="selected"><a href="#tab1">Learning Outcomes</a></li>
+				<li><a href="#tab2">Learning Modules</a></li>
+				<li><a href="#tab3">Instructor Bio</a></li>
+			</ul>
+		</nav>
+		<section>
+			<div id="tab1">
+				<h1>Learning Outcomes</h1>
+				<p>LEARNING OUTCOMES: Lorum ipsum sed ornare accumsan fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque porttitor lacus tortor, vel accumsan lectus gravida ultricies. Pellentesque at rhoncus nulla, eu fermentum erat. Suspendisse dapibus semper tincidunt. Ut vestibulum metus nec blandit semper. Nulla consequat massa eu tortor elementum suscipit. In a mattis ante. Proin molestie, felis ut hendrerit lacinia, nunc ligula imperdiet ante, sed efficitur ipsum sem non lectus.</p>
+			</div>
+			<div id="tab2" class="hidden">
+				<h1>Learning Modules</h1>
+				<p>LEARNING MODULES: Lorum ipsum eu nisi sit amet, porttitor pellentesque ex. Fusce placerat sagittis neque, eget ultrices augue sollicitudin et. Nam eu cursus est. Donec sed est purus. Sed ornare accumsan fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque porttitor lacus tortor, vel accumsan lectus gravida ultricies. Pellentesque at rhoncus nulla, eu fermentum erat. Suspendisse dapibus semper tincidunt. Ut vestibulum metus nec blandit semper. Nulla consequat massa eu tortor elementum suscipit. In a mattis ante. Proin molestie, felis ut hendrerit lacinia, nunc ligula imperdiet ante, sed efficitur ipsum sem non lectus.</p>
+			</div>
+			<div id="tab3" class="hidden">
+				<h1>Instructor Bio</h1>
+				<p>INSTRUCTOR BIO: Lorum ipsum sarius eu nisi sit amet, porttitor pellentesque ex. Fusce placerat sagittis neque, eget ultrices augue sollicitudin et. Nam eu cursus est. Donec sed est purus. Sed ornare accumsan fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque porttitor lacus tortor, vel accumsan lectus gravida ultricies. Pellentesque at rhoncus nulla, eu fermentum erat. Suspendisse dapibus semper tincidunt. Ut vestibulum metus nec blandit semper. Nulla consequat massa eu tortor elementum suscipit. In a mattis ante. Proin molestie, felis ut hendrerit lacinia, nunc ligula imperdiet ante, sed efficitur ipsum sem non lectus.</p>
+			</div>
+		</section>
+	</section>
+</body>
+</html>

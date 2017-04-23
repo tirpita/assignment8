@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accordion menu - Assignment 8</title>
+   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script src="styles.css"></script>
+<script>
+ /*global, $*/
+$(function(){
+    $("body").css({
+        position:"absolute",
+        margin:"4% 15%",
+        width: "55%",
+        padding: "5%",
+        border: "3px solid grey",
+        fontFamily: "sans-serif",
+        color:"black"
+    });
+    $("a").css({
+        textDecoration:"none",
+        color:"purple",
+        border:"1px solid black",
+        borderTopLeftRadius:"25px",
+        borderTopRightRadius:"25px",
+        borderBottomLeftRadius:"25px",
+        borderBottomRightRadius:"25px",
+        padding:"10px 65% 10px 10px",
+        margin:"2% 1% 20% 0",
+        backgroundColor:"lightgrey"
+    });
+     $(".accordian").css({
+        display:"inline-block",
+        float:"left"
+    });
+     $(".menu1 menu2 menu3").css({
+       padding:"10px 65% 10px 10px",
+       margin:"2% 1% 20% 0"
+    });
+	function closeSection(){
+		$(".accordion a").removeClass("minus");
+		$(".accordion div").slideUp(500).removeClass("open");
+	}	
+	$(".accordion a").click(function(e){
+		e.preventDefault();
+		var selection = $(this).attr("href");		
+		if($(e.target).is(".minus")){
+			closeSection();
+		}
+		else{
+			closeSection();
+			$(this).addClass("minus");
+			$(".accordion " + selection).slideDown(500).addClass("open");
+        }
+	}); 
+}); 
+</script>
+</head>
+<body>
+ <section class="accordion">
+     <a href="#menu1">ENGLISH</a>
+<div id="menu1">
+       <h2 class=".minus">Greetings!</h2>
+        <p> 
+        Pellentesque at rhoncus nulla, eu fermentum erat. Suspendisse dapibus semper tincidunt. Ut vestibulum metus nec blandit semper. Nulla consequat massa eu tortor elementum suscipit. In a mattis ante. 
+        </p>
+</div>
+       <a href="#menu2">SPANISH</a>
+<div id="menu2">
+        <h2>Hola!</h2>
+        <p>Ut vestibulum metus nec blandit semper. Nulla consequat massa eu tortor elementum suscipit. In a mattis ante. Pellentesque at rhoncus nulla, eu fermentum erat. Suspendisse dapibus semper tincidunt.</p>
+</div>
+       <a href="#menu3">FRENCH</a>
+<div id="menu3">
+       <h2>Bonjour!</h2>
+        <p>Lorum ipsum eu nisi sit amet, porttitor pellentesque ex. Fusce placerat sagittis neque, eget ultrices augue sollicitudin et. Nam eu cursus est. Donec sed est purus. Sed ornare accumsan fringilla.</p>
+</div>   
+ </section>   
+</body>
+</html>
